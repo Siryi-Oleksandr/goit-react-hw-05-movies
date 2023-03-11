@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  gap: 15px;
   margin-left: auto;
   margin-right: auto;
   padding: 15px;
-  width: 980px;
+  max-width: 960px;
   border-radius: 8px;
 
   background-color: #4fc6cab9;
