@@ -7,6 +7,7 @@ import MovieDetails from 'pages/MovieDetails';
 import Movies from 'pages/Movies';
 import { Route, Routes } from 'react-router-dom';
 import { Container } from './App.styled';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         </Route>
       </Routes>
       <GlobalStyle />
+      <Toaster toastOptions={{ duration: 2500 }} />
     </Container>
   );
 };
