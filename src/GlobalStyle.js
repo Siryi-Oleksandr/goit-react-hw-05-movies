@@ -28,7 +28,7 @@ a {
   color: currentColor;
 }
 ul {
-  /* list-style: none; */
+  list-style: none;
 }
 button {
   padding: 0;
