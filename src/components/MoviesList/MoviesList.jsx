@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { List, Item, ImgWrapper, InfoWrapper } from './MovieList.styled';
+import { List, Item, ImgWrapper, InfoWrapper } from './MoviesList.styled';
 import PropTypes from 'prop-types';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
@@ -35,8 +35,6 @@ function MoviesList({ movies }) {
     </List>
   );
 }
-
-// state={{ from: location }}
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(

@@ -1,5 +1,7 @@
 // import PropTypes from 'prop-types';
-import MoviesList from 'components/MovieList/MovieList';
+import Error from 'components/Error';
+import Loader from 'components/Loader';
+import MoviesList from 'components/MoviesList';
 import { useState, useEffect } from 'react';
 import { FcSearch } from 'react-icons/fc';
 import { useSearchParams } from 'react-router-dom';
@@ -8,6 +10,8 @@ import { Form, Input, SearchBtn } from './Movies.styled';
 
 function Movies() {
   const [movies, setMovies] = useState([]);
+  const [status, setStatus] = useState('idle');
+  const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
   const [value, setValue] = useState(query ?? '');
@@ -16,8 +20,17 @@ function Movies() {
     if (!query) {
       return;
     }
+    setStatus('pending');
     const abortConroller = new AbortController();
-    API.getMoviesByQuery(query, abortConroller).then(setMovies);
+    API.getMoviesByQuery(query, abortConroller)
+      .then(data => {
+        setMovies(data);
+        setStatus('resolved');
+      })
+      .catch(error => {
+        setStatus('rejected');
+        setError(error);
+      });
 
     return () => {
       abortConroller.abort();
@@ -44,14 +57,11 @@ function Movies() {
           <FcSearch size="2em" />
         </SearchBtn>
       </Form>
-      <MoviesList movies={movies} />
+      {status === 'pending' && <Loader />}
+      {status === 'resolved' && <MoviesList movies={movies} />}
+      {status === 'rejected' && <Error error={error.message} />}
     </div>
   );
 }
-
-// Movies.propTypes = {
-//     value: PropTypes.string.isRequired,
-//     onChange: PropTypes.func.isRequired,
-// };
 
 export default Movies;

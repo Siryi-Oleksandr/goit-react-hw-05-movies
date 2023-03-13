@@ -1,9 +1,10 @@
+import Loader from 'components/Loader';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from '../../services/api';
 import { List } from './Reviews.styled';
 
-export default function Reviews() {
+function Reviews() {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
 
@@ -29,3 +30,5 @@ export default function Reviews() {
     </div>
   );
 }
+
+export default Reviews;

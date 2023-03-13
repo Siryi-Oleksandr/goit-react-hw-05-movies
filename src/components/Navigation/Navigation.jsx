@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import Loader from 'components/Loader';
+
 import { Link, Header } from './Navigation.styled';
+import Loader from 'components/Loader';
 
 function Navigation() {
   return (
@@ -12,7 +13,7 @@ function Navigation() {
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
-      <Suspense fallback={Loader()}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>

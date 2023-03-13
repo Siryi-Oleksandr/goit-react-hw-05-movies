@@ -1,10 +1,11 @@
+import Loader from 'components/Loader';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from '../../services/api';
 import { List } from './Cast.styled';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-export default function Cast() {
+function Cast() {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
 
@@ -34,3 +35,5 @@ export default function Cast() {
     </div>
   );
 }
+
+export default Cast;

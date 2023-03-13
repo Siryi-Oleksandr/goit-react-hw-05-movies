@@ -1,9 +1,9 @@
 import * as API from '../../services/api';
 import { useEffect, useState } from 'react';
-import MovieList from 'components/MovieList';
+import MoviesList from 'components/MoviesList';
 import Loader from 'components/Loader';
 // import { toast } from 'react-hot-toast';
-import { Error } from 'components/Error/Error';
+import Error from 'components/Error';
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -19,7 +19,6 @@ function Home() {
       })
       .catch(error => {
         setStatus('rejected');
-        // console.log('error from Home');
         setError(error);
       });
   }, []);
@@ -28,7 +27,7 @@ function Home() {
     <div>
       <h1>Tranding movies</h1>
       {status === 'pending' && <Loader />}
-      {status === 'resolved' && <MovieList movies={movies} />}
+      {status === 'resolved' && <MoviesList movies={movies} />}
       {status === 'rejected' && <Error error={error.message} />}
     </div>
   );

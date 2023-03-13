@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export function Error({ error }) {
+function Error({ error }) {
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>Something went wrong!</h1>
@@ -12,3 +12,5 @@ export function Error({ error }) {
 Error.propTypes = {
   Error: PropTypes.string,
 };
+
+export default Error;
