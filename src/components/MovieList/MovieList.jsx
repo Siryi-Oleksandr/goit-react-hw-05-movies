@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 function MoviesList({ movies }) {
-  //   const location = useLocation();
+  const location = useLocation();
 
   return (
     <List>
@@ -19,7 +19,7 @@ function MoviesList({ movies }) {
           vote_count,
         }) => (
           <Item key={id}>
-            <NavLink to={`/movies/${id}`}>
+            <NavLink to={`/movies/${id}`} state={{ from: location }}>
               <ImgWrapper>
                 <img src={BASE_IMG_URL + poster_path} alt={name} />
               </ImgWrapper>
@@ -39,7 +39,7 @@ function MoviesList({ movies }) {
 // state={{ from: location }}
 
 MoviesList.propTypes = {
-  images: PropTypes.arrayOf(
+  movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       poster_path: PropTypes.string,

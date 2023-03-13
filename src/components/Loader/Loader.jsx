@@ -1,7 +1,7 @@
 import { Dna } from 'react-loader-spinner';
 import { LoaderStyled } from './Loader.styled';
 
-const loader = () => {
+const Loader = () => {
   return (
     <LoaderStyled>
       <Dna
@@ -17,4 +17,4 @@ const loader = () => {
   );
 };
 
-export default loader;
+export default Loader;

@@ -8,15 +8,16 @@ import {
   Link,
 } from './MovieDetails.styled';
 import { useEffect, useState, Suspense } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import * as API from '../../services/api';
 import { BiArrowBack } from 'react-icons/bi';
-import loader from 'components/Loader/Loader';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 function MovieDetails() {
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -29,8 +30,12 @@ function MovieDetails() {
   }, [movieId]);
 
   if (!movie) {
-    return Loader();
+    return <Loader />;
   }
+
+  const handleGoBack = () => {
+    navigate(location?.state?.from ?? '/');
+  };
 
   const {
     poster_path,
@@ -47,7 +52,7 @@ function MovieDetails() {
 
   return (
     <div>
-      <Btn type="button" onClick={() => console.log('😋')}>
+      <Btn type="button" onClick={handleGoBack}>
         <BiArrowBack size="1.5em" />
         Go back
       </Btn>
@@ -70,7 +75,7 @@ function MovieDetails() {
         <Link to="cast">Cast</Link>
         <Link to="reviews">Reviews</Link>
       </AdditionInfoWrapper>
-      <Suspense fallback={loader()}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </div>

@@ -35,6 +35,7 @@ export async function getTrendingMovies() {
     return movies?.data?.results;
   } catch (error) {
     toast.error('Something went wrong 😥!');
+    // console.log('error from api');
     console.error(error);
   }
 }
