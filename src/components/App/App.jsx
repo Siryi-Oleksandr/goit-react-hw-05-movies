@@ -4,10 +4,6 @@ import { Container } from './App.styled';
 import { Toaster } from 'react-hot-toast';
 import Navigation from 'components/Navigation';
 import { GlobalStyle } from 'GlobalStyle';
-// import Reviews from 'components/Reviews';
-// import Home from 'pages/Home';
-// import MovieDetails from 'pages/MovieDetails';
-// import Movies from 'pages/Movies';
 
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));

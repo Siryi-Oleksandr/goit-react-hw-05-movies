@@ -1,4 +1,3 @@
-// import { getTrendMovieGenres } from './trandingfilms';
 // import defaultImg from '../images/movie-pic.jpg';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
@@ -17,7 +16,7 @@ export function getDataSelectedMovie(data) {
   } = data;
 
   const imgUrl = BASE_IMG_URL + poster_path;
-  const genresToShow = genres.map(genre => genre.name).split(', ');
+  const genresToShow = genres.map(genre => genre.name).join(', ');
 
   return {
     imgUrl: imgUrl,
