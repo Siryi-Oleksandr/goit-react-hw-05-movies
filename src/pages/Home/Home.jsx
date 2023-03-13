@@ -2,7 +2,7 @@ import * as API from '../../services/api';
 import { useEffect, useState } from 'react';
 import MovieList from 'components/MovieList';
 import Loader from 'components/Loader';
-import { toast } from 'react-hot-toast';
+// import { toast } from 'react-hot-toast';
 import { Error } from 'components/Error/Error';
 
 function Home() {
