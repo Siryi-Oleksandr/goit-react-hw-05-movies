@@ -1,4 +1,3 @@
-import Loader from 'components/Loader';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from '../../services/api';
