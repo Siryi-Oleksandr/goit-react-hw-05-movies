@@ -25,18 +25,18 @@ export async function getMoviesByQuery(query, controller) {
 }
 
 export async function getTrendingMovies() {
-  // try {
-  const movies = await agent.get('trending/movie/day', {
-    params: {
-      language: 'en-US',
-    },
-  });
+  try {
+    const movies = await agent.get('trending/movie/day', {
+      params: {
+        language: 'en-US',
+      },
+    });
 
-  return movies?.data?.results;
-  // } catch (error) {
-  //   toast.error('Something went wrong 😥!');
-  //   console.error(error);
-  // }
+    return movies?.data?.results;
+  } catch (error) {
+    toast.error('Something went wrong 😥!');
+    console.error(error);
+  }
 }
 
 export async function getMoviesDetailsById(id, controller) {
