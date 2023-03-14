@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { List, Item, ImgWrapper, InfoWrapper } from './MoviesList.styled';
 import PropTypes from 'prop-types';
+import defaultImg from '../../images/movie-pic.jpg';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -21,7 +22,10 @@ function MoviesList({ movies }) {
           <Item key={id}>
             <NavLink to={`/movies/${id}`} state={{ from: location }}>
               <ImgWrapper>
-                <img src={BASE_IMG_URL + poster_path} alt={name} />
+                <img
+                  src={poster_path ? BASE_IMG_URL + poster_path : defaultImg}
+                  alt={name}
+                />
               </ImgWrapper>
               <InfoWrapper>
                 <h2>{original_title ?? name}</h2>

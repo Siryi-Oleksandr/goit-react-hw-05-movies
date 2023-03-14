@@ -11,6 +11,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import * as API from '../../services/api';
 import { BiArrowBack } from 'react-icons/bi';
+import defaultImg from '../../images/movie-pic.jpg';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -58,7 +59,7 @@ function MovieDetails() {
       </Btn>
       <ItemWrapper>
         <ImgWrapper>
-          <img src={imgUrl} alt={title} />
+          <img src={poster_path ? imgUrl : defaultImg} alt={title} />
         </ImgWrapper>
         <InfoWrapper>
           <h2>
@@ -72,8 +73,12 @@ function MovieDetails() {
         </InfoWrapper>
       </ItemWrapper>
       <AdditionInfoWrapper>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
+        <Link to="cast" state={{ from: location?.state?.from ?? '/' }}>
+          Cast
+        </Link>
+        <Link to="reviews" state={{ from: location?.state?.from ?? '/' }}>
+          Reviews
+        </Link>
       </AdditionInfoWrapper>
       <Suspense fallback={<Loader />}>
         <Outlet />

@@ -14,12 +14,12 @@ function Home() {
     setStatus('pending');
     API.getTrendingMovies()
       .then(data => {
-        setMovies(data);
         setStatus('resolved');
+        setMovies(data);
       })
       .catch(error => {
-        setStatus('rejected');
         setError(error);
+        setStatus('rejected');
       });
   }, []);
 
